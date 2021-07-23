@@ -3,35 +3,33 @@ import BlogList from "./BlogList"
 
 const Homepage =()=>{
     
-    const [posts, setPosts] = useState(
-        [
-            {Title:"Understanding How to Respond to Event", Author:"Moscode", Body:"Lorum ipsum...", id: "1"},
-            {Title:"Understanding How to Respond to Event", Author:"Dammy", Body:"Lorum ipsum...", id: "2"},
-            {Title:"Understanding How to Respond to Event", Author:"Moscode", Body:"Lorum ipsum...", id: "3"},
-            {Title:"Understanding How to Respond to Event", Author:"Sky", Body:"Lorum ipsum...", id: "4"},
-            {Title:"Understanding How to Respond to Event", Author:"Moscode", Body:"Lorum ipsum...", id: "5"},
-            {Title:"Understanding How to Respond to Event", Author:"Sky", Body:"Lorum ipsum...", id: "6"}
-        ]
-        )
-    const [name, setName] = useState("Moses");
+    const [posts, setPosts] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
 
-    const handleDelete =(id)=>{
-        const newPost = posts.filter(post=> post.id !== id);
-        setPosts(newPost);
-    } 
-
-    useEffect(()=>console.log("use Effect run"), [name])
+    useEffect(()=>{
+       setTimeout(()=>{
+        fetch("http://localhost:8000/posts")
+       .then(
+           (res)=>{
+               return(res.json())
+           }
+       ).then(
+           (data)=>{
+               setPosts(data)
+               setIsLoading(false);
+           }
+       ).catch(err=>{
+           console.log(err.message)
+       })
+    },2000)},[])
 
     return(
         <div className="home">
-            <BlogList posts={posts} head="All Posts" handleDelete = {handleDelete}/>
-            <p>{name}</p>
-            <button onClick={()=>setName("Dammy")}>Change name</button>
-
+            {isLoading && <div>Loading...</div>}
+           {posts && <BlogList posts={posts} head="All Posts"/>}
            {/*<BlogList posts = {posts.filter(post=>post.Author === "Sky")} head="Sky's Posts"/>*/}
         </div>
     );
 }
-
 export default Homepage;
