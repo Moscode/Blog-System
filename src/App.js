@@ -1,14 +1,10 @@
-import Navbar from "./Navbar.js"
-import Homepage from "./Home"
+import react from "react";
 
 const App =()=>{
 
     return(
         <div className="app">
-            <Navbar />
-            <div className="content">
-            <Homepage />
-            </div>
+            
         </div>
     )
 }

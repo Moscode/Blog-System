@@ -1,8 +1,0 @@
-{ "posts":[
-    {"Title":"Understanding How to Respond to Event", "Author":"Moscode", "Body":"Lorum ipsum...", "id": 1},
-    {"Title":"Understanding How to Respond to Event", "Author":"Dammy", "Body":"Lorum ipsum...", "id": 2},
-    {"Title":"Understanding How to Respond to Event", "Author":"Moscode", "Body":"Lorum ipsum...", "id": 3},
-    {"Title":"Understanding How to Respond to Event", "Author":"Sky","Body":"Lorum ipsum...", "id": "4"},
-    {"Title":"Understanding How to Respond to Event", "Author":"Moscode", "Body":"Lorum ipsum...", "id": "5"},
-    {"Title":"Understanding How to Respond to Event", "Author":"Sky", "Body":"Lorum ipsum...", "id":"6"}
-]}
